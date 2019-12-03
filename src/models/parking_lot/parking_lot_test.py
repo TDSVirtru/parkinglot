@@ -1,4 +1,4 @@
-"""Test class ParkingLot."""
+"""Test model class ParkingLot."""
 
 import pytest  # noqa: F401
 
