@@ -13,7 +13,8 @@ echo "*** Upgrading PIP"
 pip install --upgrade pip
 
 echo "*** Installing needed packages"
-pip install pytest-watch
+pip install -U pytest-watch
+pip install -U flake8
 
 echo "*** Setup complete"
 echo "****************************************"
