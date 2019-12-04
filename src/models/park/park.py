@@ -1,8 +1,14 @@
 """Abstract base class for all Park objects."""
 
 
+from ..adjudicator import Adjudicator
+
+
 class Park:
     """Park class."""
+
+    # Create a class variable to hold the singleton Adjudicator for all parks
+    adjudicator = Adjudicator()
 
     def __init__(self, name=None):
         """Construct a park."""
@@ -27,10 +33,10 @@ class Park:
         """
         raise Exception("Park.park method not implemented")
 
-    def full():
+    def is_full():
         """Return the full status of the park instance."""
         raise Exception("Park.full method not implemented")
 
-    def empty():
+    def is_empty():
         """Return the empty status of the park instance."""
         raise Exception("Park.empty method not implemented")

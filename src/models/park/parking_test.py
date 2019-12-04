@@ -3,6 +3,7 @@
 import pytest  # noqa: F401
 
 from .park import Park
+from ..adjudicator import Adjudicator
 
 
 # @pytest.mark.skip()
@@ -16,6 +17,7 @@ def test_park_construction_with_name():
     foo = Park("One")
     assert type(foo) is Park
     assert foo.name == "One"
+    assert type(foo.adjudicator) is Adjudicator
 
 
 # @pytest.mark.skip()
