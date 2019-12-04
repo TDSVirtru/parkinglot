@@ -84,9 +84,11 @@ Spaces, Rows, Levels, and Lots all share an "abstract" base class Park that park
 
 1. If a Park reports neither Full nor Empty then it has some parked cars and some free spaces. 
 
+Lot, level, and row are nodes in a tree data structure with Spaces as the leaves. 
+
 ##### Lot
 
-A lot is an immutable set of levels. 
+A lot is an immutable set of levels.  It is also the root of the parking data structure that exposes the parking API. 
 
 ##### Level
 

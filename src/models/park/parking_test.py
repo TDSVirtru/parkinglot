@@ -6,5 +6,41 @@ from .park import Park
 
 
 # @pytest.mark.skip()
-def test_park_construction():
-    assert type(Park()) is Park
+def test_park_construction_empty():
+    with pytest.raises(Exception):
+        Park()
+
+
+# @pytest.mark.skip()
+def test_park_construction_with_name():
+    foo = Park("One")
+    assert type(foo) is Park
+    assert foo.name == "One"
+
+
+# @pytest.mark.skip()
+def test_park_name_durability():
+    foo = Park("One")
+    with pytest.raises(Exception):
+        foo.name = "Not one"
+
+
+# @pytest.mark.skip()
+def test_park_method_park_abstraction():
+    foo = Park("One")
+    with pytest.raises(Exception):
+        foo.park()
+
+
+# @pytest.mark.skip()
+def test_park_method_full_abstraction():
+    foo = Park("One")
+    with pytest.raises(Exception):
+        foo.is_full()
+
+
+# @pytest.mark.skip()
+def test_park_method_empty_abstraction():
+    foo = Park("One")
+    with pytest.raises(Exception):
+        foo.is_empty()
