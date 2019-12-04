@@ -13,7 +13,7 @@ def test_park_construction_empty():
 
 
 # @pytest.mark.skip()
-def test_park_construction_with_name():
+def test_park_construction_with_name_only():
     foo = Park("One")
     assert type(foo) is Park
     assert foo.name == "One"
@@ -21,10 +21,31 @@ def test_park_construction_with_name():
 
 
 # @pytest.mark.skip()
+def test_park_construction_with_parks():
+    park1 = Park("One")
+    park2 = Park("Two")
+    park3 = Park("Three")
+    foo = Park("Fred", [park1, park2, park3])
+    assert type(foo) is Park
+    assert foo.name == "Fred"
+    assert len(foo.parks) == 3
+    assert park1 in foo.parks
+    assert park2 in foo.parks
+    assert park3 in foo.parks
+
+
+# @pytest.mark.skip()
 def test_park_name_durability():
     foo = Park("One")
     with pytest.raises(Exception):
         foo.name = "Not one"
+
+# @pytest.mark.skip()
+def test_park_parks_durability():
+    one = Park("One")
+    foo = Park("Foo")
+    with pytest.raises(Exception):
+        foo.parks = set([one])
 
 
 # @pytest.mark.skip()
