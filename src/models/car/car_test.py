@@ -5,6 +5,7 @@ import pytest  # noqa: F401
 from .car import Car
 
 from ..attribute import Compact
+from ..attribute import Electric
 from ..attribute import Handicapped
 
 
@@ -42,3 +43,13 @@ def test_car_durability_of_attributes2():
     attr_copy.add(attr2)
     assert attr2 in attr_copy
     assert attr2 not in foo.attributes
+
+
+# @pytest.mark.skip()
+def test_car_factory_method():
+    car = Car.create({'attrs': ["H", "C", "E"]})
+    assert type(car) is Car
+    assert len(car.attributes) == 3
+    assert Compact() in car.attributes
+    assert Electric() in car.attributes
+    assert Handicapped() in car.attributes

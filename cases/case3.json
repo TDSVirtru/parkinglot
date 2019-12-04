@@ -1,0 +1,60 @@
+{
+  "name": "Case 1",
+  "parking_lot": {
+    "name": "LotA",
+    "levels": [
+      {
+        "name": "ground",
+        "rows": [
+          {
+            "name": "r1",
+            "spaces": [
+              { "name": "01", "attr": ["C"] },
+              { "name": "02", "attr": ["C"] }
+            ]
+          },
+          {
+            "name": "r2",
+            "spaces": [
+              { "name": "04", "attr": ["C"] },
+              { "name": "05", "attr": ["C"] }
+            ]
+          }
+        ]
+      },
+      {
+        "name": "first",
+        "rows": [
+          {
+            "name": "r1",
+            "spaces": [
+              { "name": "12", "attr": ["H"] },
+              { "name": "13", "attr": [] }
+            ]
+          },
+          {
+            "name": "r2",
+            "spaces": [
+              { "name": "14", "attr": ["E"] },
+              { "name": "15", "attr": [] }
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  "cars": [
+    { "name": "Electric_1", "attrs": ["E"] },
+    { "name": "Regular_1", "attrs": [] },
+    { "name": "Compact_1", "attrs": ["C"] },
+    { "name": "Compact_2", "attrs": ["C"] },
+    { "name": "Regular_2", "attrs": [] },
+    { "name": "Handicapped_1", "attrs": ["H"] },
+    { "name": "Regular_3", "attrs": [] },
+    { "name": "Regular_4", "attrs": [] },
+    { "name": "Handicapped_2", "attrs": ["H"] },
+    { "name": "Compact_3", "attrs": ["C"] },
+    { "name": "Compact_4", "attrs": ["C"] },
+    { "name": "Compact_5", "attrs": ["C"] }
+  ]
+}

@@ -9,10 +9,6 @@ from ..park_row import ParkRow
 from ..park_space import ParkSpace
 from ..car import Car
 
-from ..attribute import Compact
-from ..attribute import Electric
-from ..attribute import Handicapped
-
 
 # @pytest.mark.skip()
 def test_park_lot_construction_empty():
@@ -145,8 +141,8 @@ def test_park_lot_factory_method():
                     {
                         'name': "r2",
                         'spaces': [
-                            {'name': "04", 'attr': ["C"]},
-                            {'name': "05", 'attr': ["C"]}
+                            {'name': "04", 'attr': []},
+                            {'name': "05", 'attr': []}
                         ]
                     }
                 ]
@@ -157,14 +153,14 @@ def test_park_lot_factory_method():
                     {
                         'name': "r1",
                         'spaces': [
-                            {'name': "12", 'attr': []},
-                            {'name': "13", 'attr': ["E"]},
+                            {'name': "12", 'attr': ["H"]},
+                            {'name': "13", 'attr': []},
                         ]
                     },
                     {
                         'name': "r2",
                         'spaces': [
-                            {'name': "14", 'attr': ["H"]},
+                            {'name': "14", 'attr': ["E"]},
                             {'name': "15", 'attr': []}
                         ]
                     }
@@ -175,13 +171,13 @@ def test_park_lot_factory_method():
     assert foo.name == "LotA"
     assert len(foo.parks) == 2
     assert foo.is_empty()
-    print(foo.park(Car([Handicapped()])))
-    print(foo.park(Car([Compact()])))
-    print(foo.park(Car()))
-    print(foo.park(Car([Electric()])))
-    print(foo.park(Car([Compact()])))
-    print(foo.park(Car([Compact()])))
-    print(foo.park(Car()))
+    print(foo.park(Car.create({'attrs': ["E"]}), True))
+    print(foo.park(Car.create({'attrs': []})))
+    print(foo.park(Car.create({'attrs': []})))
+    print(foo.park(Car.create({'attrs': ["H"]})))
+    print(foo.park(Car.create({'attrs': []})))
+    print(foo.park(Car.create({'attrs': []})))
+    print(foo.park(Car.create({'attrs': ["C"]})))
     assert not foo.is_full()
-    print(foo.park(Car([Compact()])))
+    print(foo.park(Car.create({'attrs': ["C"]})))
     assert foo.is_full()
