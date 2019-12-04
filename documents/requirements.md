@@ -64,7 +64,9 @@ Also, since the HANDICAPPED attribute is a mutable property, the eight subclasse
 
 Another approach would be to use something like Scala traits to import the various attributes via multiple inheritance. This is not much better, as it does not resolve the basic problem of exponental growth in the code base. 
 
-The most pragmatic approach is to have a single class that contains an array of attribute instances that contain the business logic. This inversion of control pattern is very flexible. Attribute mutablity is handled by adding and deleting mutable attribute instances from the attribute array.  Immutable attributes may not be added or deleted. 
+The most pragmatic approach is to have a single class that is passed a collection of attribute instances that contain the business logic. This inversion of control pattern is very flexible.
+
+Attribute mutablity would be handled by adding and deleting mutable attribute instances from the attribute set.  For simplicity, and since mutablity is not in the requirements, the attribute sets for cars are implemented with immutable frozen sets. 
 
 ##### Park base class
 

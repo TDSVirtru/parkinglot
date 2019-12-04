@@ -11,6 +11,13 @@ class Attribute:
     def __init__(self, name=None):
         """Construct a Attribute with a value string."""
         self.__name = name
+        self.__hash = hash(name)
+
+    def __hash__(self):
+        return self.__hash
+
+    def __eq__(self, other):
+        return self.attribute == other.attribute
 
     @property
     def attribute(self):

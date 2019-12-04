@@ -24,6 +24,13 @@ def test_attribute_name_durability():
     assert foo.attribute == "FOO"
 
 
+def test_attribute_relative_equal():
+    foo = Attribute("This is an attribute")
+    bar = Attribute("This is an attribute")
+    assert foo == bar
+    assert foo.__hash__() == bar.__hash__()
+
+
 def test_attribute_abstraction_for_permits():
     foo = Attribute()
     with pytest.raises(Exception):
