@@ -15,7 +15,7 @@ class Park:
         if name is None:
             raise Exception("Park children must have names.")
         self.__name = name
-        self.__parks = set(parks)
+        self.__parks = set(parks)  # order ignored. Can be replaced with List.
 
     @property
     def name(self):
@@ -37,6 +37,7 @@ class Park:
         """Noop."""
         raise Exception("Cannot set parks on a park row after construction.")
 
+    # Override the Park.park method.
     def park(self, car, preferred=False):
         """Park the car in the first acceptable spot.
 
@@ -45,12 +46,24 @@ class Park:
         available spot. Returns the coordinates of the space, or None if
         not successful.
         """
-        raise Exception("Park.park method not implemented")
+        for park in self.__parks:
+            result = park.park(car, preferred)
+            if result is not None:
+                return "{0}-{1}".format(self.name, result)
+        return None
 
-    def is_full():
-        """Return the full status of the park instance."""
-        raise Exception("Park.full method not implemented")
+    # Override the Park.is_full method.
+    def is_full(self):
+        """Return the full status of this park instance."""
+        for park in self.parks:
+            if park.is_empty():
+                return False
+        return True
 
-    def is_empty():
-        """Return the empty status of the park instance."""
-        raise Exception("Park.empty method not implemented")
+    # Override the Park.is_empty method.
+    def is_empty(self):
+        """Return the empty status of this park instance."""
+        for park in self.parks:
+            if park.is_full():
+                return False
+        return True

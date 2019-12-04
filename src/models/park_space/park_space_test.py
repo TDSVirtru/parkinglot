@@ -5,6 +5,7 @@ import pytest  # noqa: F401
 from .park_space import ParkSpace
 
 from ..attribute import Compact
+from ..attribute import Electric
 from ..attribute import Handicapped
 
 from ..car import Car
@@ -63,4 +64,14 @@ def test_park_space_reject_park_if_full():
     car1 = Car()  # a regular car with no attributes
     car2 = Car()  # a regular car with no attributes
     foo.park(car1)
+    assert foo.is_full()
     assert foo.park(car2) is None
+    assert foo.is_full()
+    assert foo.car is car1
+
+
+@pytest.mark.skip()
+def test_park_space_reject_park_not_preferred():
+    foo = ParkSpace("Fred", [])  # A regular space with no attributes
+    electric_car = Car([Electric()])  # electric cars prefer electric spaces
+    assert foo.park(electric_car, True) is None

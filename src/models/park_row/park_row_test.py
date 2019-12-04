@@ -8,7 +8,7 @@ from ..park_space import ParkSpace
 from ..car import Car
 
 
-# @pytest.mark.skip()
+@pytest.mark.skip()
 def test_park_row_construction_empty():
     foo = ParkRow("Fred")
     assert type(foo) is ParkRow
@@ -16,7 +16,7 @@ def test_park_row_construction_empty():
     assert len(foo.spaces) == 0
 
 
-# @pytest.mark.skip()
+@pytest.mark.skip()
 def test_park_row_construct_with_spaces():
     space1 = ParkSpace("One")
     space2 = ParkSpace("Two")
@@ -30,7 +30,7 @@ def test_park_row_construct_with_spaces():
     assert space3 in foo.spaces
 
 
-# @pytest.mark.skip()
+@pytest.mark.skip()
 def test_park_row_no_spaces_status():
     """Check the degenerate case.
 
@@ -41,7 +41,7 @@ def test_park_row_no_spaces_status():
     assert foo.is_full()
 
 
-# @pytest.mark.skip()
+@pytest.mark.skip()
 def test_park_row_status_with_spaces():
     space = ParkSpace("One")
     foo = ParkRow("Fred", [space])
@@ -51,7 +51,7 @@ def test_park_row_status_with_spaces():
     foo.park(car)
     assert not foo.is_empty()
     assert foo.is_full()
-    
+
 
 @pytest.mark.skip()
 def test_park_row_park_qualified_car():

@@ -3,6 +3,7 @@
 import pytest  # noqa: F401
 
 from .park import Park
+
 from ..adjudicator import Adjudicator
 
 
@@ -40,6 +41,7 @@ def test_park_name_durability():
     with pytest.raises(Exception):
         foo.name = "Not one"
 
+
 # @pytest.mark.skip()
 def test_park_parks_durability():
     one = Park("One")
@@ -55,15 +57,12 @@ def test_park_method_park_abstraction():
         foo.park()
 
 
-# @pytest.mark.skip()
+# TODO - build tests for these.  Will require mocks.
+@pytest.mark.skip()
 def test_park_method_full_abstraction():
-    foo = Park("One")
-    with pytest.raises(Exception):
-        foo.is_full()
+    pass
 
 
-# @pytest.mark.skip()
-def test_park_method_empty_abstraction():
-    foo = Park("One")
-    with pytest.raises(Exception):
-        foo.is_empty()
+@pytest.mark.skip()
+def test_park_method_empty():
+    pass

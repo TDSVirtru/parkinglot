@@ -33,7 +33,7 @@ class ParkSpace(Park):
         """Raise an exception if atttempt is made to set the value of car."""
         raise Exception("cannot alter the value of car on a park space")
 
-    def park(self, car):
+    def park(self, car, preferred=False):
         """Park the car if possible.
 
         Returns the coordinates of the space if successful, or None if

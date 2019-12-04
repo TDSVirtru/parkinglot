@@ -84,7 +84,7 @@ Spaces, Rows, Levels, and Lots all share an "abstract" base class Park that park
 
 1. If a Park reports neither Full nor Empty then it has some parked cars and some free spaces. 
 
-Lot, level, and row are nodes in a tree data structure with Spaces as the leaves. 
+Lot, level, and row are nodes in a tree data structure with Spaces as the leaves. This offers an opportunity for implementing the parking operation in the base class and not the subclasses. They exist primarily to create the parking tree from a JSON manifest. 
 
 ##### Lot
 
