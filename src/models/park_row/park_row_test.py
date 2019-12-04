@@ -8,15 +8,15 @@ from ..park_space import ParkSpace
 from ..car import Car
 
 
-@pytest.mark.skip()
+# @pytest.mark.skip()
 def test_park_row_construction_empty():
     foo = ParkRow("Fred")
     assert type(foo) is ParkRow
     assert foo.name == "Fred"
-    assert len(foo.spaces) == 0
+    assert len(foo.parks) == 0
 
 
-@pytest.mark.skip()
+# @pytest.mark.skip()
 def test_park_row_construct_with_spaces():
     space1 = ParkSpace("One")
     space2 = ParkSpace("Two")
@@ -24,54 +24,55 @@ def test_park_row_construct_with_spaces():
     foo = ParkRow("Fred", [space1, space2, space3])
     assert type(foo) is ParkRow
     assert foo.name == "Fred"
-    assert len(foo.spaces) == 3
-    assert space1 in foo.spaces
-    assert space2 in foo.spaces
-    assert space3 in foo.spaces
+    assert len(foo.parks) == 3
+    assert space1 in foo.parks
+    assert space2 in foo.parks
+    assert space3 in foo.parks
 
 
-@pytest.mark.skip()
+# @pytest.mark.skip()
 def test_park_row_no_spaces_status():
-    """Check the degenerate case.
-
-    If no spaces then the row is both full and empty.
-    """
+    """Check the degenerate case of no spaces."""
     foo = ParkRow("Fred")
     assert foo.is_empty()
     assert foo.is_full()
 
 
-@pytest.mark.skip()
-def test_park_row_status_with_spaces():
-    space = ParkSpace("One")
-    foo = ParkRow("Fred", [space])
-    assert foo.is_empty()
-    assert not foo.is_full()
-    car = Car()
-    foo.park(car)
-    assert not foo.is_empty()
-    assert foo.is_full()
-
-
-@pytest.mark.skip()
-def test_park_row_park_qualified_car():
+# @pytest.mark.skip()
+def test_park_row_fill_status():
     space1 = ParkSpace("One")
     space2 = ParkSpace("Two")
     space3 = ParkSpace("Three")
     foo = ParkRow("Fred", [space1, space2, space3])
-    car1 = Car()
-    car2 = Car()
-    car3 = Car()
     assert foo.is_empty()
-    assert foo.park(car1) == "Fred-One"
     assert not foo.is_full()
+    car1 = Car()
+    assert foo.park(car1)
     assert not foo.is_empty()
+    assert not foo.is_full()
+    car2 = Car()
+    assert foo.park(car2)
+    assert not foo.is_empty()
+    assert not foo.is_full()
+    car3 = Car()
+    assert foo.park(car3)
+    assert not foo.is_empty()
+    assert foo.is_full()
 
 
-@pytest.mark.skip()
+# @pytest.mark.skip()
 def test_park_row_reject_park_if_full():
-    foo = ParkRow("Fred", [])  # A regular Row with no attributes
-    car1 = Car()  # a regular car with no attributes
-    car2 = Car()  # a regular car with no attributes
-    foo.park(car1)
-    assert foo.park(car2) is None
+    space1 = ParkSpace("One")
+    space2 = ParkSpace("Two")
+    space3 = ParkSpace("Three")
+    foo = ParkRow("Fred", [space1, space2, space3])
+    foo.park(Car())
+    foo.park(Car())
+    foo.park(Car())
+    assert foo.park(Car()) is None
+
+
+# @pytest.mark.skip()
+def test_park_row_check_return_address():
+    foo = ParkRow("Fred", [ParkSpace("One")])
+    assert foo.park(Car()) == "Fred-One"
