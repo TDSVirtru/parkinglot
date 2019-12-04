@@ -46,16 +46,13 @@ def test_park_row_fill_status():
     foo = ParkRow("Fred", [space1, space2, space3])
     assert foo.is_empty()
     assert not foo.is_full()
-    car1 = Car()
-    assert foo.park(car1)
+    foo.park(Car())
     assert not foo.is_empty()
     assert not foo.is_full()
-    car2 = Car()
-    assert foo.park(car2)
+    foo.park(Car())
     assert not foo.is_empty()
     assert not foo.is_full()
-    car3 = Car()
-    assert foo.park(car3)
+    foo.park(Car())
     assert not foo.is_empty()
     assert foo.is_full()
 
@@ -69,6 +66,7 @@ def test_park_row_reject_park_if_full():
     foo.park(Car())
     foo.park(Car())
     foo.park(Car())
+    assert foo.is_full()
     assert foo.park(Car()) is None
 
 
