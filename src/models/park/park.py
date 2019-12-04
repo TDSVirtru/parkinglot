@@ -55,15 +55,17 @@ class Park:
     # Override the Park.is_full method.
     def is_full(self):
         """Return the full status of this park instance."""
+        full = True
         for park in self.parks:
-            if park.is_empty():
-                return False
-        return True
+            if not park.is_full():
+                full = False
+        return full
 
     # Override the Park.is_empty method.
     def is_empty(self):
         """Return the empty status of this park instance."""
+        empty = True
         for park in self.parks:
-            if park.is_full():
-                return False
-        return True
+            if not park.is_empty():
+                empty = False
+        return empty
