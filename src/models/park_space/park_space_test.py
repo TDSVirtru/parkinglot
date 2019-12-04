@@ -95,3 +95,15 @@ def test_park_space_rejects_if_full():
     assert foo.park(car2) is None
     assert foo.is_full()
     assert foo.car is car1
+
+
+def test_factory_method():
+    foo = ParkSpace.create({
+        'name': "42",
+        'attributes': ["E", "H", "C"]
+    })
+    assert type(foo) is ParkSpace
+    assert foo.name == "42"
+    assert Electric() in foo.attributes
+    assert Compact() in foo.attributes
+    assert Handicapped() in foo.attributes

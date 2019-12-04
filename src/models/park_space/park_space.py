@@ -4,9 +4,28 @@ from ..park import Park
 
 from ..adjudicator import PREFERRED
 
+from ..attribute import Compact
+from ..attribute import Electric
+from ..attribute import Handicapped
+
 
 class ParkSpace(Park):
     """Park space class."""
+
+    @classmethod
+    def create(cls, opts):
+        """Unpack serialization object and return an ParkSpace."""
+        attrs = []
+        if "attributes" in opts:
+            for attr in opts['attributes']:
+                if attr == "H":
+                    attrs.append(Handicapped())
+                if attr == "C":
+                    attrs.append(Compact())
+                if attr == "E":
+                    attrs.append(Electric())
+
+        return cls(opts['name'], attrs)
 
     def __init__(self, name, attributes=None):
         """Construct a park space."""
