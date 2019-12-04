@@ -2,6 +2,8 @@
 
 from ..park import Park
 
+from ..adjudicator import PREFERRED
+
 
 class ParkSpace(Park):
     """Park space class."""
@@ -33,26 +35,38 @@ class ParkSpace(Park):
         """Raise an exception if atttempt is made to set the value of car."""
         raise Exception("cannot alter the value of car on a park space")
 
+    # Override the Park class park method.
     def park(self, car, preferred=False):
         """Park the car if possible.
 
-        Returns the coordinates of the space if successful, or None if
-        the space is full or the car doesn't have the attributes required.
+        This ParkSpace.park method is the kernel of the process. It returns
+        the coordinates of the space if the car parks, or none if it doesn't.
         """
         # Check to see if the space is already occupied
         if self.__car is not None:
             return None
 
-        # TODO - check with the adudicator to see if this is possible
+        # get a sense of how good the match between car and space is
+        match_result = self.adjudicator.match(car, self)
 
-        # Park the car
+        # If the car and space are incompatible return None
+        if match_result is None:
+            return None
+
+        # if the car is picky and the match not great, return None
+        if preferred and match_result is not PREFERRED:
+            return None
+
+        # The space is compatible, and the car likes it well enough. Park it.
         self.__car = car
         return self.name
 
+    # Override the Park method with this specialized test
     def is_full(self):
         """Return the full status of the park instance."""
         return self.__car is not None
 
+    # Override the Park method with this specialized test
     def is_empty(self):
         """Return the empty status of the park instance."""
         return self.__car is None

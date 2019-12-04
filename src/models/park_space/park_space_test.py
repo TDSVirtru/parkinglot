@@ -59,7 +59,34 @@ def test_park_space_park_qualified_car():
 
 
 # @pytest.mark.skip()
-def test_park_space_reject_park_if_full():
+def test_park_space_park_unqualified_car():
+    foo = ParkSpace("Fred", [Compact()])  # A regular space with no attributes
+    car = Car()  # a regular car with no attributes
+    assert foo.is_empty()
+    assert foo.park(car) is None
+    assert foo.is_empty()
+
+
+# @pytest.mark.skip()
+def test_park_space_park_picky_car():
+    foo = ParkSpace("Fred", [])  # A regular space with no attributes
+    car = Car([Electric()])  # a regular car with no attributes
+    assert foo.is_empty()
+    assert foo.park(car, True) is None
+    assert foo.is_empty()
+
+
+# @pytest.mark.skip()
+def test_park_space_park_picky_car_settles():
+    foo = ParkSpace("Fred", [])  # A regular space with no attributes
+    car = Car([Electric()])  # a regular car with no attributes
+    assert foo.is_empty()
+    assert foo.park(car, False) == "Fred"
+    assert foo.is_full()
+
+
+# @pytest.mark.skip()
+def test_park_space_rejects_if_full():
     foo = ParkSpace("Fred", [])  # A regular space with no attributes
     car1 = Car()  # a regular car with no attributes
     car2 = Car()  # a regular car with no attributes
@@ -68,10 +95,3 @@ def test_park_space_reject_park_if_full():
     assert foo.park(car2) is None
     assert foo.is_full()
     assert foo.car is car1
-
-
-@pytest.mark.skip()
-def test_park_space_reject_park_not_preferred():
-    foo = ParkSpace("Fred", [])  # A regular space with no attributes
-    electric_car = Car([Electric()])  # electric cars prefer electric spaces
-    assert foo.park(electric_car, True) is None
