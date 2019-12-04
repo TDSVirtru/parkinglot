@@ -16,8 +16,8 @@ class ParkSpace(Park):
     def create(cls, opts):
         """Unpack serialization object and return an ParkSpace."""
         attrs = []
-        if "attributes" in opts:
-            for attr in opts['attributes']:
+        if "attr" in opts:
+            for attr in opts['attr']:
                 if attr == "H":
                     attrs.append(Handicapped())
                 if attr == "C":

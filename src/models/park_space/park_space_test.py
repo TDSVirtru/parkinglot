@@ -100,7 +100,7 @@ def test_park_space_rejects_if_full():
 def test_factory_method():
     foo = ParkSpace.create({
         'name': "42",
-        'attributes': ["E", "H", "C"]
+        'attr': ["E", "H", "C"]
     })
     assert type(foo) is ParkSpace
     assert foo.name == "42"

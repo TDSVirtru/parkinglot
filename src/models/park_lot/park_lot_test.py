@@ -9,6 +9,10 @@ from ..park_row import ParkRow
 from ..park_space import ParkSpace
 from ..car import Car
 
+from ..attribute import Compact
+from ..attribute import Electric
+from ..attribute import Handicapped
+
 
 # @pytest.mark.skip()
 def test_park_lot_construction_empty():
@@ -121,3 +125,63 @@ def test_park_row_check_return_address():
     level1 = ParkLevel("L1", [row1])
     foo = ParkLevel("P1", [level1])
     assert foo.park(Car()) == "P1-L1-R1-S1"
+
+
+# @pytest.mark.skip()
+def test_park_lot_factory_method():
+    foo = ParkLot.create({
+        'name': "LotA",
+        'levels': [
+            {
+                'name': "ground",
+                'rows': [
+                    {
+                        'name': "r1",
+                        'spaces': [
+                            {'name': "01", 'attr': ["C"]},
+                            {'name': "02", 'attr': ["C"]},
+                        ]
+                    },
+                    {
+                        'name': "r2",
+                        'spaces': [
+                            {'name': "04", 'attr': ["C"]},
+                            {'name': "05", 'attr': ["C"]}
+                        ]
+                    }
+                ]
+            },
+            {
+                'name': "first",
+                'rows': [
+                    {
+                        'name': "r1",
+                        'spaces': [
+                            {'name': "12", 'attr': []},
+                            {'name': "13", 'attr': ["E"]},
+                        ]
+                    },
+                    {
+                        'name': "r2",
+                        'spaces': [
+                            {'name': "14", 'attr': ["H"]},
+                            {'name': "15", 'attr': []}
+                        ]
+                    }
+                ]
+            }
+        ]
+    })
+    assert foo.name == "LotA"
+    assert len(foo.parks) == 2
+    assert foo.is_empty()
+    print(foo.park(Car([Handicapped()])))
+    print(foo.park(Car([Compact()])))
+    print(foo.park(Car()))
+    print(foo.park(Car([Electric()])))
+    print(foo.park(Car([Compact()])))
+    print(foo.park(Car([Compact()])))
+    print(foo.park(Car()))
+    assert not foo.is_full()
+    print(foo.park(Car([Compact()])))
+    assert foo.is_full()
