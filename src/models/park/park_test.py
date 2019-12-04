@@ -57,9 +57,10 @@ def test_park_method_park_abstraction():
         foo.park()
 
 
-# TODO - build tests for these.  Will require mocks.
+# TODO - build local unit tests for these.  Will require mocks.  Currently
+# they are being tested in the subclass unit tests.
 @pytest.mark.skip()
-def test_park_method_full_abstraction():
+def test_park_method_full():
     pass
 
 
