@@ -74,3 +74,19 @@ def test_park_row_reject_park_if_full():
 def test_park_row_check_return_address():
     foo = ParkRow("Fred", [ParkSpace("One")])
     assert foo.park(Car()) == "Fred-One"
+
+
+# @pytest.mark.skip()
+def test_park_row_factory_method():
+    foo = ParkRow.create({
+        'name': "row12",
+        'spaces': [
+            {'name': "42", 'attr': ["H"]},
+            {'name': "43", 'attr': []},
+            {'name': "44", 'attr': []},
+            {'name': "45", 'attr': ["C"]},
+            {'name': "46", 'attr': ["C"]}
+        ]
+    })
+    assert foo.name == "row12"
+    assert len(foo.parks) == 5
