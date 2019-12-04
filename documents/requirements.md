@@ -46,7 +46,7 @@ Although TLRs do not call out any interactions between attributes, in general th
   
 ##### Adjudicator 
 
-The Adjudicator class encapsulates the business logic used to determine if a car can, and would like to, park in a space.  The Adjudicator object implements a single method, Adjudicator.can_park( Car, Space) that returns either None, ALLOWED, or PREFERRED.
+The Adjudicator class encapsulates the business logic used to determine if a car can, and would like to, park in a space.  The Adjudicator object implements a single method, Adjudicator.is_match( car, space) that returns either None, ALLOWED, or PREFERRED.
  
 Internally, the method is a generic runner of the Car and Space attribute methods that actually know the rules.  
 

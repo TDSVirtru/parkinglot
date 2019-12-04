@@ -29,14 +29,14 @@ class Attribute:
         """NOOP the request to protect the internal name value."""
         pass
 
-    def permits(self, Car):
+    def permits(self, car):
         """Determine if a Space attribute permits the car to park.
 
         Acceptable responses are the boolean values True and False.
         """
         raise Exception("Abstract method Attribute.permits() not defined")
 
-    def desires(self, Space):
+    def desires(self, space):
         """Determine how much a Car attribute desires a space.
 
         Acceptable responses are PREFERS, ACCEPTS, and REJECTS."""
