@@ -4,7 +4,6 @@ from ..attribute import Attribute
 
 from ..attribute import PREFERS
 from ..attribute import ACCEPTS
-from ..attribute import REJECTS
 
 ELECTRIC = "Electric"
 
@@ -16,10 +15,15 @@ class Electric(Attribute):
         """Construct an Electric."""
         Attribute.__init__(self, ELECTRIC)
 
-    def permits(self, Car):
-        """Determine if Space attribute electric permits this car to park."""
+    def permits(self, car):
+        """Determine if car contains attribute Electric."""
+        if self in car.attributes:
+            return True
         return False
 
-    def desires(self, Space):
+    def desires(self, space):
         """Determine how much this electric Car desires the space."""
+        if self in space.attributes:
+            print('ping')
+            return PREFERS
         return ACCEPTS

@@ -33,7 +33,7 @@ The Attributes embody the parking rules. Each Attribute supports two methods, At
 	1. Spaces with ELECTRIC only accept cars with ELECTRIC.
 	1. Spaces with COMPACT only accept cars with COMPACT.  
   
-1. For Car attribute use: Attribute.desires(Space) -> PREFERS, YES, NO 
+1. For Car attribute use: Attribute.desires(Space) -> PREFERS, ACCEPTS, REJECTS
 	1. Cars with HANDICAPPED require spaces with HANDICAPPED. 
 	1. Cars with ELECTRIC prefer spaces with ELECTRIC. 
 	1. Cars with COMPACT do not prefer COMPACT spaces.
