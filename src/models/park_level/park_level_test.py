@@ -89,3 +89,28 @@ def test_park_row_check_return_address():
     row1 = ParkRow("R1", [space1])
     foo = ParkLevel("L1", [row1])
     assert foo.park(Car()) == "L1-R1-S1"
+
+
+# @pytest.mark.skip()
+def test_park_level_factory_method():
+    foo = ParkLevel.create({
+        'name': "levelA",
+        'rows': [
+            {
+                'name': "row1",
+                'spaces': [
+                    {'name': "42", 'attr': []},
+                    {'name': "43", 'attr': []},
+                ]
+            },
+            {
+                'name': "row2",
+                'spaces': [
+                    {'name': "44", 'attr': []},
+                    {'name': "45", 'attr': []}
+                ]
+            }
+        ]
+    })
+    assert foo.name == "levelA"
+    assert len(foo.parks) == 2
